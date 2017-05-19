@@ -391,7 +391,6 @@
                         <selected>Skin.HasSetting(furniture.studiorecord)</selected>
                         <onclick>Skin.ToggleSetting(furniture.studiorecord)</onclick>
                     </control>
-					
 					<control type="radiobutton" id="9300" description="Studios color">
                         <width>1310</width>
                         <visible>ControlGroup(9100).HasFocus(9106)</visible>
@@ -401,7 +400,6 @@
                         <onclick>Skin.ToggleSetting(furniture.studiocolor)</onclick>
 						<enable>Skin.HasSetting(furniture.studiorecord)</enable>
                     </control>
-					
 					<control type="radiobutton" id="9289" description="Show CharacterArt ">
                         <width>1310</width>
                         <visible>ControlGroup(9100).HasFocus(9106)</visible>
@@ -410,7 +408,6 @@
                         <selected>Skin.HasSetting(furniture.cart)</selected>
                         <onclick>Skin.ToggleSetting(furniture.cart)</onclick>
                     </control>
-					
 					<control type="radiobutton" id="9283" description="Show DiscArt">
                         <width>1310</width>
                         <visible>ControlGroup(9100).HasFocus(9106)</visible>
@@ -573,6 +570,14 @@
                         <selected>Skin.HasSetting(home.showheader)</selected>
                         <onclick>Skin.ToggleSetting(home.showheader)</onclick>
                         <enable>!Skin.HasSetting(home.vertical)</enable>
+                    </control>
+					<control type="radiobutton" id="9280" description="Show Weather Radar">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>Enable the Radar on Weather Screen</label>
+                        <selected>!Skin.HasSetting(weather.map)</selected>
+                        <onclick>Skin.ToggleSetting(weather.map)</onclick>
                     </control>
 
                 </control>

@@ -1,11 +1,11 @@
-Creative Commons Non Commercial 3.0 License
-Icon images from iconmonstr.com see website for license terms
-Some additional icons from metroicon.net courtesy of Piers
+My Modfications to the Skin.arctic.zephyr.plus  
 
-Installing the latest version
-1) In this page click on the green button Clone or Download --> Download ZIP
-2) Uncompress this ZIP file. This will create a folder named skin.arctic.zephyr.plus-master
-3) Rename that folder to skin.arctic.zephyr.plus
-4) Compress that folder again into a ZIP file. 
-5) In Kodi, use that ZIP file (and not the original one) to install the plugin in Settings --> Addons --> Install from ZIP file.
-6) You are done!
+* Added Pandora Thumbs up and Down buttons in Music OSD  
+    (1080i/Includes_OSD.xml)
+
+* Added Weather Radar to Weather screen with toggles to enable / disable in both weather screen settings and in Skin settings in Extra
+    (1080i/MyWeather.xml)
+    (1080i/SkinSettings.xml)
+
+*Changed max widgets to 20 (original was 10) 
+    (shortcuts/template.xml)

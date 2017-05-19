@@ -10,6 +10,7 @@
         <include>Furniture_Header</include>
         <include>Furniture_NowPlaying</include>
         <include>Furniture_Clock</include>
+		<include>GlobalOverlay</include>	
         <control type="group">
             <include>Animation.Common</include>
             <control type="grouplist">
@@ -409,7 +410,18 @@
                         <label fallback="161">$INFO[Window(Weather).Property(Day4.Outlook)]</label>
                     </control>
                 </control>
-            </control>
+			</control>
+			<control type="image">
+			<include>Animation.FadeIn</include>
+			<include>Animation.FadeOut</include>
+			<centertop>45%</centertop>
+			<centerleft>59%</centerleft>
+			<width>1510</width>
+			<height>810</height>
+			<aspectratio align="center" aligny="center"></aspectratio>
+			<texture>$INFO[Window.Property(Map.3.Area)]</texture>
+			<visible>!Skin.HasSetting(weather.map)</visible>
+			</control>
 
 
         </control>
@@ -457,6 +469,13 @@
                     <enable>!IsEmpty(Skin.String(weather.fanart.path))</enable>
                     <selected>!Skin.HasSetting(weather.hidefanart)</selected>
                     <onclick>Skin.ToggleSetting(weather.hidefanart)</onclick>
+                </control>
+				<control type="radiobutton" id="9009" description="Show Weather Radar">
+                    <include>DefContextButton</include>
+					<align>left</align>
+                    <label>Enable the Radar</label>
+                    <selected>!Skin.HasSetting(weather.map)</selected>
+                    <onclick>Skin.ToggleSetting(weather.map)</onclick>
                 </control>
                 <control type="button" id="9001" description="Set Icons">
                     <include>DefContextButton</include>

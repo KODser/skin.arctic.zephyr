@@ -55,6 +55,7 @@
 						<top>-226</top>
 						<width>334</width>
 						<height>486</height>
+						<aspectratio>keep</aspectratio>
                         <texture>$VAR[PlayerPoster]</texture>
                         <visible>!IsEmpty(Player.Art(tvshow.poster)) | !IsEmpty(Player.Art(poster))</visible>
                     </control>

@@ -464,6 +464,19 @@
             <enable>Player.SeekEnabled</enable>
             <animation effect="fade" start="100" end="33" time="100" condition="!Player.SeekEnabled">Conditional</animation>
         </control>
+	
+	<control type="button" id="420">
+            <description>Thumbs Down</description>
+            <onclick>Notification(Pandora,Thumped DOWN !)</onclick>
+	    <onclick>RunPlugin(plugin://plugin.audio.pandoki/?rate=down)</onclick>
+            <width>48</width>
+            <height>48</height>
+            <label></label>
+            <font>noop</font>
+            <include>DefOSDUpDown</include>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/thumbsdown.png</texturefocus>
+            <texturenofocus colordiffuse="PanelWhite70">osd/thumbsdown.png</texturenofocus>
+	</control>
 
         <control type="togglebutton" id="14">
             <description>Play/Pause</description>
@@ -481,6 +494,19 @@
             <onclick>PlayerControl(Play)</onclick>
             <enable>Player.PauseEnabled</enable>
             <animation effect="fade" start="100" end="33" time="100" condition="!Player.PauseEnabled">Conditional</animation>
+        </control>
+	
+	<control type="button" id="421">
+            <description>Thumbs Up</description>
+            <onclick>Notification(Pandora,Thumped Up !)</onclick>
+	    <onclick>RunPlugin(plugin://plugin.audio.pandoki/?rate=up)</onclick>
+            <width>48</width>
+            <height>48</height>
+            <label></label>
+            <font>noop</font>
+            <include>DefOSDUpDown</include>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/thumbsup.png</texturefocus>
+            <texturenofocus colordiffuse="PanelWhite70">osd/thumbsup.png</texturenofocus>
         </control>
 
         <control type="button" id="15">
