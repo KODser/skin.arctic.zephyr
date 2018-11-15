@@ -7,8 +7,8 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(503)</visible>
             <control type="fixedlist" id="503">
-                <oninfo condition="substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)">ActivateWindow(1129)</oninfo>
-                <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | Container.Content(musicvideos) | Container.Content(albums)| Window.IsActive(programs) | Container.Content(addons) | Container.Content(artists)</visible>
+                <oninfo condition="Container.Content(games)">ActivateWindow(1129)</oninfo>
+                <visible>Container.Content(games) | Container.Content(musicvideos) | Container.Content(albums)| Window.IsActive(programs) | Container.Content(addons) | Container.Content(artists)</visible>
                 <posy>259</posy> <!--default is 309-->
                 <posx>-190</posx>
                 <width>2300</width>
@@ -41,7 +41,7 @@
                             <texture border="5" colordiffuse="Dark1">common/box.png</texture>
                         </control>
                         <control type="image">
-                            <visible>!substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
+                            <visible>!Container.Content(games)</visible>
                             <width>PosterW</width>
                             <height>PosterW</height>
                             <fadetime>100</fadetime>
@@ -51,7 +51,7 @@
                         
                         <!--CHANGES-->
                         <control type="image">
-                            <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
+                            <visible>Container.Content(games)</visible>
                             <width>PosterW</width>
                             <height>PosterW</height>
                             <fadetime>100</fadetime>
@@ -61,8 +61,8 @@
                         <!--END-->
                         
                         <control type="group">
-                            <visible>!substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) + !stringcompare(ListItem.Label,..)</visible>
-                            <visible>stringcompare(ListItem.Overlay,OverlayWatched.png)</visible>
+                            <visible>!Container.Content(games) + !String.IsEqual(ListItem.Label,..)</visible>
+                            <visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
 				
                             <control type="image">
                                 <left>379</left>
@@ -76,7 +76,7 @@
 		
 	        <!--CHANGED-->
 		<control type="group">
-		<visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>	 
+		<visible>Container.Content(games)</visible>	 
 		   <control type="image">
                         <left>379</left>
                         <centertop>32</centertop>
@@ -84,7 +84,7 @@
                         <height>32</height>
                         <aspectratio aligny="top">keep</aspectratio>
                         <texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatchedBacking]</texture>
-                        <visible>!stringcompare(ListItem.Label,..)</visible>
+                        <visible>!String.IsEqual(ListItem.Label,..)</visible>
                     </control>
                     <control type="image">
                         <left>379</left>
@@ -93,7 +93,7 @@
                         <height>32</height>
                         <aspectratio aligny="top">keep</aspectratio>
                         <texture>$VAR[PosterPercentWatched]</texture>
-                        <visible>!stringcompare(ListItem.Label,..)</visible>
+                        <visible>!String.IsEqual(ListItem.Label,..)</visible>
                     </control> 
 		 </control>
 		<!--END-->
@@ -139,7 +139,7 @@
                             <fadetime>100</fadetime>
                             <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
                             <texture diffuse="diffuse/listposter.png" background="true">$VAR[PosterImage]</texture>
-                            <visible>!substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
+                            <visible>!Container.Content(games)</visible>
                         </control>
                         
                         <!--CHANGES-->
@@ -149,13 +149,13 @@
                             <fadetime>100</fadetime>
                             <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
                             <texture diffuse="diffuse/listposter.png" background="true">$VAR[ThumbImage]</texture>
-                            <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
+                            <visible>Container.Content(games)</visible>
                         </control>
                         <!--END-->
                         
                         <control type="group">
-                            <visible>!stringcompare(ListItem.Label,..) + !substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
-                            <visible>stringcompare(ListItem.Overlay,OverlayWatched.png)</visible>
+                            <visible>!String.IsEqual(ListItem.Label,..) + !Container.Content(games)</visible>
+                            <visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
 
                             <control type="image">
                                 <left>379</left>
@@ -169,7 +169,7 @@
 		
 		<!--CHANGED-->
 		<control type="group">
-		<visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>	 
+		<visible>Container.Content(games)</visible>	 
 		   <control type="image">
                         <left>379</left>
                         <centertop>32</centertop>
@@ -177,7 +177,7 @@
                         <height>32</height>
                         <aspectratio aligny="top">keep</aspectratio>
                         <texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatchedBacking]</texture>
-                        <visible>!stringcompare(ListItem.Label,..)</visible>
+                        <visible>!String.IsEqual(ListItem.Label,..)</visible>
                     </control>
                     <control type="image">
                        <left>379</left>
@@ -186,7 +186,7 @@
                         <height>32</height>
                         <aspectratio aligny="top">keep</aspectratio>
                         <texture>$VAR[PosterPercentWatched]</texture>
-                        <visible>!stringcompare(ListItem.Label,..)</visible>
+                        <visible>!String.IsEqual(ListItem.Label,..)</visible>
                     </control> 
 		 </control>   
 		<!--END-->	    
@@ -217,7 +217,7 @@
                 <visible>![Container(503).OnNext | Container(503).OnPrevious]</visible>
                 <animation effect="fade" start="0" end="100" delay="450" time="250" reversible="false">Visible</animation>
                 <control type="label">
-                    <visible>!substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
+                    <visible>!Container.Content(games)</visible>
                     <font>SmallBold</font>
                     <label>$VAR[PosterSquareLabel1]</label>
                     <textcolor>Dark1</textcolor>
@@ -226,7 +226,7 @@
                 </control>
 
                 <control type="label">
-				<visible>!substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
+				<visible>!Container.Content(games)</visible>
                     <font>Tiny</font>
                     <label>$VAR[PosterSquareLabel2]</label>
                     <textcolor>Dark1</textcolor>
@@ -236,7 +236,7 @@
                 
                 <!--CHANGES-->
 				<control type="label">
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
+                    <visible>Container.Content(games)</visible>
                     <font>SmallBold</font>
                     <label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
                     <textcolor>Dark1</textcolor>
@@ -245,7 +245,7 @@
                 </control>
  
                 <control type="label">
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left)</visible>
+                    <visible>Container.Content(games)</visible>
                     <font>Tiny</font>
                     <label>$VAR[LabelGenre]$INFO[ListItem.Studio,  •  ]</label>
                     <textcolor>Dark1</textcolor>
@@ -254,7 +254,7 @@
                 </control>
 
 		<control type="textbox">
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | Container.Content(artists) | Container.Content(musicvideos) | Container.Content(albums)</visible>
+                    <visible>Container.Content(games) | Container.Content(artists) | Container.Content(musicvideos) | Container.Content(albums)</visible>
                     <font>Tiny</font>
                     <label>$VAR[LabelPlotBox]</label>
                     <textcolor>Dark2</textcolor>

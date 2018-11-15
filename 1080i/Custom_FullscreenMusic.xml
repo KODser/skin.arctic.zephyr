@@ -1,6 +1,6 @@
 <window type="dialog" id="3001">
     <allowoverlay>no</allowoverlay>
     <onload condition="!Window.IsActive(visualisation)">FullScreen</onload>
-     <visible>Player.HasAudio + Skin.HasSetting(osd.gotofullscreen) + Integer.IsGreater(MusicPlayer.Time,1) + IsEmpty(Window(10025).Property(PlayingBackgroundMedia))</visible>
+     <visible>Player.HasAudio + Skin.HasSetting(osd.gotofullscreen) + Integer.IsGreater(MusicPlayer.Time,1) + String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))</visible>
     <controls></controls>
 </window>

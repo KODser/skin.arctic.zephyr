@@ -39,8 +39,8 @@
 					<aspectratio align="right" aligny="top">keep</aspectratio>
 					<texture colordiffuse="Dark1">resource://resource.images.studios.white/$INFO[Window(Home).Property(SkinHelper.ListItem.Studio),,.png]</texture>
 					<visible>!Skin.HasSetting(furniture.studiocolor)</visible>
-					<visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
-					<visible>!Skin.HasSetting(furniture.nowplaying) + ![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord) | Skin.HasSetting(furniture.nowplaying)+ Skin.HasSetting(furniture.studiorecord) | !IsEmpty(Window(10025).Property(PlayingBackgroundMedia))+ Skin.HasSetting(furniture.studiorecord)</visible>
+					<visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
+					<visible>!Skin.HasSetting(furniture.nowplaying) + ![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord) | Skin.HasSetting(furniture.nowplaying)+ Skin.HasSetting(furniture.studiorecord) | !String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))+ Skin.HasSetting(furniture.studiorecord)</visible>
 				</control>
 				
 				<control type="image" id="1235">
@@ -52,8 +52,8 @@
 					<aspectratio align="right" aligny="top">keep</aspectratio>
 					<texture>resource://resource.images.studios.coloured/$INFO[Window(Home).Property(SkinHelper.ListItem.Studio),,.png]</texture>
 					<visible>Skin.HasSetting(furniture.studiocolor)</visible>
-					<visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
-					<visible>!Skin.HasSetting(furniture.nowplaying) + ![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord) | Skin.HasSetting(furniture.nowplaying)+ Skin.HasSetting(furniture.studiorecord) | !IsEmpty(Window(10025).Property(PlayingBackgroundMedia))+ Skin.HasSetting(furniture.studiorecord)</visible>
+					<visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
+					<visible>!Skin.HasSetting(furniture.nowplaying) + ![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord) | Skin.HasSetting(furniture.nowplaying)+ Skin.HasSetting(furniture.studiorecord) | !String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))+ Skin.HasSetting(furniture.studiorecord)</visible>
 				</control>
 
                 <control type="button" id ="5">
@@ -108,7 +108,7 @@
                 </control>
 
 				<control type="grouplist">
-					<visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
+					<visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
 					<right>SidePad</right>
 					<top>480</top>
 					<width>410</width>
@@ -133,7 +133,7 @@
 				</control>
 				
                 <control type="group">
-                    <visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
+                    <visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
                     <left>540</left>
                     <right>SidePad</right>
                     <bottom>224</bottom>
@@ -377,7 +377,7 @@
                     <centerbottom>51%</centerbottom>
                     <width>450</width>
                     <height>117</height>
-                    <visible>!IsEmpty(Window.Property(content)) + Container(9501).IsUpdating + !Control.IsVisible(50)</visible>
+                    <visible>!String.IsEmpty(Window.Property(content)) + Container(9501).IsUpdating + !Control.IsVisible(50)</visible>
                     <include>Animation.FadeIn</include>
                     <include>Animation.FadeOut</include>
 

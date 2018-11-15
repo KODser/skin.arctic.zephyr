@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
     id="skin.arctic.zephyr.plus"
-    version="2.3.9"
+    version="2.3.10"
     name="Arctic: Zephyr +"
-    provider-name="jurialmunkey - Mod by KODser">
+    provider-name="jurialmunkey - Mod by KODser/CRial">
     <requires>
-        <import addon="xbmc.gui" version="5.12.0"/>
+        <import addon="xbmc.gui" version="5.13.0"/>
         <import addon="script.skinshortcuts" version="0.4.0"/>
         <import addon="service.library.data.provider" version="0.1.0"/>
         <import addon="script.skin.helper.service" version="0.0.1"/>
@@ -70,6 +70,9 @@
 			<screenshot>resources/screenshot-07.jpg</screenshot>
 			<screenshot>resources/screenshot-08.jpg</screenshot>
 			<screenshot>resources/screenshot-09.jpg</screenshot>
+      <screenshot>resources/screenshot-10.jpg</screenshot>
+			<screenshot>resources/screenshot-11.jpg</screenshot>
+			<screenshot>resources/screenshot-12.jpg</screenshot>
 		</assets>
     </extension>
 </addon>

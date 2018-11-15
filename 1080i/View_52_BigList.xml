@@ -5,7 +5,7 @@
     <include name="View_52_BigList_SinglePane">
         <description>List View (id=52)</description>
 		<oninfo condition="ListItem.IsCollection">ActivateWindow(1131)</oninfo>
-        <oninfo condition="substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)">ActivateWindow(1129)</oninfo>
+        <oninfo condition="Container.Content(games)">ActivateWindow(1129)</oninfo>
         <control type="group">
             <include>Animation.Common</include>
             <visible>Control.IsVisible(52)</visible>
@@ -43,7 +43,7 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(52)</visible>
             <control type="panel" id="52">
-               <oninfo condition="substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)">ActivateWindow(1129)</oninfo> 
+               <oninfo condition="Container.Content(games)">ActivateWindow(1129)</oninfo> 
                 <top>PosterPad</top>
                 <left>SidePad</left>
                 <width>1770</width>
@@ -128,7 +128,7 @@
             <font>Small</font>
             <textcolor>Dark1</textcolor>
             <label>$INFO[ListItem.Rating]</label>
-			<visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+			<visible>Container.Content(games)</visible>
         </control>
         <!--END-->
         
@@ -139,7 +139,7 @@
             <height>32</height>
             <aspectratio aligny="top">keep</aspectratio>
             <texture>$VAR[PercentWatched]</texture>
-            <visible>!stringcompare(ListItem.Label,..)</visible>
+            <visible>!String.IsEqual(ListItem.Label,..)</visible>
         </control>
     </include>
 
@@ -201,7 +201,7 @@
             <font>Small</font>
             <textcolor>Light1</textcolor>
             <label>$INFO[ListItem.Rating]</label>
-			<visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+			<visible>Container.Content(games)</visible>
         </control>
         <!--END-->
         
@@ -212,7 +212,7 @@
             <height>32</height>
             <aspectratio aligny="top">keep</aspectratio>
             <texture>$VAR[PercentWatched]</texture>
-            <visible>!stringcompare(ListItem.Label,..)</visible>
+            <visible>!String.IsEqual(ListItem.Label,..)</visible>
         </control>
     </include>
 

@@ -8,8 +8,8 @@
             <visible>Control.IsVisible(58)</visible>
             <control type="group">
                 <control type="panel" id="58">
-                    <oninfo condition="substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)">ActivateWindow(1128)</oninfo>
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | [Container.Content(episodes) + !substring(Container.FolderPath,plugin://,left)] | Container.Content(actors) | Container.Content(seasons)</visible>
+                    <oninfo condition="Container.Content(games)">ActivateWindow(1128)</oninfo>
+                    <visible>Container.Content(games) | Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | [Container.Content(episodes) + !String.Contains(Container.FolderPath,plugin://,left)] | Container.Content(actors) | Container.Content(seasons)</visible>
                     <top>206</top>
                     <height>660</height>
                     <left>70</left>
@@ -38,7 +38,7 @@
                             <height>32</height>
                             <aspectratio aligny="top">keep</aspectratio>
                             <texture>$VAR[PercentWatched]</texture>
-                            <visible>!stringcompare(ListItem.Label,..)</visible>
+                            <visible>!String.IsEqual(ListItem.Label,..)</visible>
                         </control>
                         <control type="image">
                             <left>10</left>
@@ -101,7 +101,7 @@
                             <height>32</height>
                             <aspectratio aligny="top">keep</aspectratio>
                             <texture>$VAR[PercentWatched]</texture>
-                            <visible>!stringcompare(ListItem.Label,..)</visible>
+                            <visible>!String.IsEqual(ListItem.Label,..)</visible>
                         </control>
                         <control type="image">
                             <left>10</left>
@@ -171,7 +171,7 @@
                             <height>32</height>
                             <aspectratio aligny="top">keep</aspectratio>
                             <texture>$VAR[PercentWatched]</texture>
-                            <visible>!stringcompare(ListItem.Label,..)</visible>
+                            <visible>!String.IsEqual(ListItem.Label,..)</visible>
                         </control>
                         <control type="label">
                             <left>237</left>
@@ -223,7 +223,7 @@
                             <height>32</height>
                             <aspectratio aligny="top">keep</aspectratio>
                             <texture>$VAR[PercentWatched]</texture>
-                            <visible>!stringcompare(ListItem.Label,..)</visible>
+                            <visible>!String.IsEqual(ListItem.Label,..)</visible>
                         </control>
                         <control type="image">
                             <left>10</left>

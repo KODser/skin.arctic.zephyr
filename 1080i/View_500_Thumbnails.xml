@@ -12,7 +12,7 @@
             <control type="group">
                 <control type="panel" id="500">
 				   <oninfo condition="ListItem.IsCollection">ActivateWindow(1131)</oninfo>
-                   <visible> !substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+                   <visible> !Container.Content(games)</visible>
                     <top>206</top>
                     <left>70</left>
                     <width>1780</width>
@@ -82,8 +82,8 @@
                             <height>32</height>
                             <aspectratio aligny="top">keep</aspectratio>
                             <texture>$VAR[PercentWatched]</texture>
-                            <visible>!stringcompare(ListItem.Label,..)</visible>
-                            <visible>stringcompare(ListItem.Overlay,OverlayWatched.png)</visible>
+                            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+                            <visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
                         </control>
 
                     </itemlayout>
@@ -143,8 +143,8 @@
                             <height>32</height>
                             <aspectratio aligny="top">keep</aspectratio>
                             <texture>$VAR[PercentWatched]</texture>
-                            <visible>!stringcompare(ListItem.Label,..)</visible>
-                            <visible>stringcompare(ListItem.Overlay,OverlayWatched.png)</visible>
+                            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+                            <visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
                         </control>
                     </focusedlayout>
                 </control>

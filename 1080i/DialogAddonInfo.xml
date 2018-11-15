@@ -68,7 +68,14 @@
                         <visible>!Skin.HasSetting(global.kioskmode)</visible>
                         <visible>Control.IsEnabled(7)</visible>
                     </control>
-
+                    
+                    <control type="button" id ="10">
+                      <description>Dependencies</description>
+                      <label>$LOCALIZE[39024]</label>
+                      <width>260</width>
+                      <include>DefInfoButtons</include>
+                    </control>
+                  
                     <control type="button" id ="9">
                         <description>Settings</description>
                         <label>24020</label>
@@ -85,6 +92,18 @@
                         <include>DefInfoButtons</include>
                         <visible>!Skin.HasSetting(global.kioskmode)</visible>
                         <visible>Control.IsEnabled(8)</visible>
+                    </control>
+
+                    <control type="radiobutton" id ="13">
+                        <description>Update</description>
+                        <radioposx>210</radioposx>
+                        <align>left</align>
+                        <textureradioonfocus colordiffuse="Selected">buttons/radio-on.png</textureradioonfocus>
+                        <textureradioonnofocus colordiffuse="Black70">buttons/radio-on.png</textureradioonnofocus>
+                        <width>260</width>
+                        <include>DefInfoButtons</include>
+                        <visible>!Skin.HasSetting(global.kioskmode)</visible>
+                        <visible>Control.IsEnabled(13)</visible>
                     </control>
                 </control>
 

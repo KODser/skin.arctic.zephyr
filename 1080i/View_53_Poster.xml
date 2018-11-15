@@ -3,9 +3,9 @@
 <includes>
     <include name="53Content">
         <height>1080</height>
-        <oninfo condition="substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)">ActivateWindow(1128)</oninfo>
+        <oninfo condition="Container.Content(games)">ActivateWindow(1128)</oninfo>
 		<oninfo condition="Container.Content(sets)">ActivateWindow(1131)</oninfo>
-        <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons)</visible>
+        <visible>Container.Content(games) | Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons)</visible>
         <posy>96</posy>
         <posx>-190</posx>
         <width>2300</width>
@@ -49,7 +49,7 @@
                 </control>
                 
                 <control type="group">
-                    <visible>!stringcompare(ListItem.Label,..)</visible>
+                    <visible>!String.IsEqual(ListItem.Label,..)</visible>
                     <control type="image">
                         <left>379</left>
                         <centertop>32</centertop>
@@ -104,7 +104,7 @@
                     <texture diffuse="diffuse/listposter.png" background="true">$VAR[PosterImage]</texture>
                 </control>
                 <control type="group">
-                    <visible>!stringcompare(ListItem.Label,..)</visible>
+                    <visible>!String.IsEqual(ListItem.Label,..)</visible>
 
 
                   <control type="image">
@@ -167,7 +167,7 @@
                 </control>
 
                 <control type="label">
-                    <visible>!substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+                    <visible>!Container.Content(games)</visible>
                     <font>Tiny</font>
                     <label>$VAR[LabelGenre]</label>
                     <textcolor>Dark1</textcolor>
@@ -177,7 +177,7 @@
                 
                 <!--CHANGED-->
                 <control type="label">
-					<visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+					<visible>Container.Content(games)</visible>
                     <font>Tiny</font>
                     <label>$VAR[LabelGenre]$INFO[ListItem.Studio,  •  ]</label>
                     <textcolor>Dark1</textcolor>

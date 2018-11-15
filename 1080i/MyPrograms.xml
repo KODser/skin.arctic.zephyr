@@ -330,7 +330,7 @@
                     <selected>Skin.HasSetting(furniture.titleImage)</selected>
                     <onclick>Skin.ToggleSetting(furniture.titleImage)</onclick>
 					<onclick condition="Skin.HasSetting(furniture.snapImage)">Skin.ToggleSetting(furniture.snapImage)</onclick>
-                    <visible>[substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)] + [Skin.HasSetting(55wallprograms.showinfo)+Control.IsVisible(55) | Skin.HasSetting(59wall.showinfo)+Control.IsVisible(59) | Control.IsVisible(555) | Skin.HasSetting(555wall.showinfo)+ Control.IsVisible(955) |Skin.HasSetting(855wall.showinfo)+Control.IsVisible(855) | Skin.HasSetting(56mediaprograms.showinfo)+Control.IsVisible(56) | Skin.HasSetting(56mediaprograms.low)+Control.IsVisible(56) | !Skin.HasSetting(57listprograms.low)+Control.IsVisible(57)]</visible>
+                    <visible>[Container.Content(games)] + [Skin.HasSetting(55wallprograms.showinfo)+Control.IsVisible(55) | Skin.HasSetting(59wall.showinfo)+Control.IsVisible(59) | Control.IsVisible(555) | Skin.HasSetting(555wall.showinfo)+ Control.IsVisible(955) |Skin.HasSetting(855wall.showinfo)+Control.IsVisible(855) | Skin.HasSetting(56mediaprograms.showinfo)+Control.IsVisible(56) | Skin.HasSetting(56mediaprograms.low)+Control.IsVisible(56) | !Skin.HasSetting(57listprograms.low)+Control.IsVisible(57)]</visible>
                 </control>
 				
 				<control type="radiobutton" id="9030" description="Enable Snap Image">
@@ -340,7 +340,7 @@
                     <selected>Skin.HasSetting(furniture.snapImage)</selected>
                     <onclick>Skin.ToggleSetting(furniture.snapImage)</onclick>
 					<onclick condition="Skin.HasSetting(furniture.titleImage)">Skin.ToggleSetting(furniture.titleImage)</onclick>
-                    <visible>[substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)] + [Skin.HasSetting(55wallprograms.showinfo)+Control.IsVisible(55) | Skin.HasSetting(59wall.showinfo)+Control.IsVisible(59) | Control.IsVisible(555) | Skin.HasSetting(555wall.showinfo)+ Control.IsVisible(955) |Skin.HasSetting(855wall.showinfo)+Control.IsVisible(855) | Skin.HasSetting(56mediaprograms.showinfo)+Control.IsVisible(56) | Skin.HasSetting(56mediaprograms.low)+Control.IsVisible(56) | !Skin.HasSetting(57listprograms.low)+Control.IsVisible(57)]</visible>
+                    <visible>[Container.Content(games)] + [Skin.HasSetting(55wallprograms.showinfo)+Control.IsVisible(55) | Skin.HasSetting(59wall.showinfo)+Control.IsVisible(59) | Control.IsVisible(555) | Skin.HasSetting(555wall.showinfo)+ Control.IsVisible(955) |Skin.HasSetting(855wall.showinfo)+Control.IsVisible(855) | Skin.HasSetting(56mediaprograms.showinfo)+Control.IsVisible(56) | Skin.HasSetting(56mediaprograms.low)+Control.IsVisible(56) | !Skin.HasSetting(57listprograms.low)+Control.IsVisible(57)]</visible>
                 </control>
 				
 

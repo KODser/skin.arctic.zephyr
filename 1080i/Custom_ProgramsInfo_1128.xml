@@ -3,7 +3,7 @@
 <window id="1128" type="dialog">
 <onload condition="Skin.HasSetting(global.showvideo)">Skin.ToggleSetting(global.showvideo)</onload>
 <onload condition="!Skin.HasSetting(furniture.nowplaying)">Skin.ToggleSetting(furniture.nowplaying)</onload>
-<onload condition="[String.Contains(ListItem.Property(platform),MAME) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)] + !IsEmpty(ListItem.trailer)">PlayMedia($INFO[ListItem.trailer],1)</onload>
+<onload condition="[String.Contains(ListItem.Property(platform),MAME) | Container.Content(games)] + !String.IsEmpty(ListItem.trailer)">PlayMedia($INFO[ListItem.trailer],1)</onload>
 
     <defaultcontrol always="true">9000</defaultcontrol>
 
@@ -25,7 +25,7 @@
 					<right>SidePad</right>
 					<texture>$VAR[GamesExtraArtcontrollers]</texture>
 					<aspectratio>keep</aspectratio>
-					<visible>String.IsEqual(ListItem.Property(platform),ListItem.Label) + !Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
+					<visible>String.IsEqual(ListItem.Property(platform),ListItem.Label) + !Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
 			</control>
 		
             <animation type="Conditional" reversible="true" condition="Window.IsVisible(FileBrowser.xml) | Window.IsVisible(DialogConfirm.xml) | Window.IsVisible(DialogSelect.xml) | Window.IsVisible(DialogContextMenu.xml) | Window.IsVisible(DialogButtonMenu.xml)">
@@ -57,7 +57,7 @@
 					<aspectratio align="right" aligny="top">keep</aspectratio>
 					<texture colordiffuse="Dark1">flags/games/studios/$INFO[ListItem.Studio,,.png]</texture>
 					<visible>!String.IsEqual(ListItem.Property(platform),ListItem.Label)</visible>
-					<visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
+					<visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
 					<visible>![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord)</visible>
 				</control>
 
@@ -164,7 +164,7 @@
 						<onclick>Close</onclick>
 						<onclick>PlayMedia($INFO[ListItem.trailer])</onclick>
                         <include>DefInfoButtons</include>  
-                        <visible>!IsEmpty(ListItem.trailer) + !String.Contains(ListItem.Property(platform),MAME)</visible>
+                        <visible>!String.IsEmpty(ListItem.trailer) + !String.Contains(ListItem.Property(platform),MAME)</visible>
                     </control>
 
                     <control type="button" id="10">
@@ -174,7 +174,7 @@
 						<onclick condition="Control.IsVisible(50)">SendClick(1128,5)</onclick>
 						<onclick>SetProperty(content,3)</onclick>
                         <onclick>SetFocus(9505)</onclick> 
-						<visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) + !String.Contains(ListItem.Property(platform),"MAME") + !String.IsEqual(ListItem.Property(platform),ListItem.Label)</visible>
+						<visible>Container.Content(games) | + !String.Contains(ListItem.Property(platform),"MAME") + !String.IsEqual(ListItem.Property(platform),ListItem.Label)</visible>
                     </control>
 					
                     <control type="button" id="17">
@@ -184,7 +184,7 @@
 						<onclick condition="Control.IsVisible(50)">SendClick(1128,5)</onclick>
 						<onclick>SetProperty(content,4)</onclick>
                         <onclick>SetFocus(9506)</onclick> 
-						<visible>[substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | String.Contains(ListItem.Property(platform),"MAME")]+ !String.IsEqual(ListItem.Property(platform),ListItem.Label)</visible>
+						<visible>[Container.Content(games) | String.Contains(ListItem.Property(platform),"MAME")]+ !String.IsEqual(ListItem.Property(platform),ListItem.Label)</visible>
                     </control>
 
                     <control type="button" id ="18">
@@ -234,7 +234,7 @@
                     <include>Animation.DelayFadeIn</include>
                 </control>
                 <control type="label">
-                    <visible>Control.IsVisible(50) | [!IsEmpty(Window.Property(content))+ String.IsEqual(Window.Property(content),2) + !Container(9501).IsUpdating]</visible>
+                    <visible>Control.IsVisible(50) | [!String.IsEmpty(Window.Property(content))+ String.IsEqual(Window.Property(content),2) + !Container(9501).IsUpdating]</visible>
                     <left>540</left>
                     <right>SidePad</right>
                     <top>260</top>
@@ -246,7 +246,7 @@
                 </control>
 
                 <control type="group">
-                    <visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
+                    <visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
                     <left>540</left>
                     <right>SidePad</right>
                     <bottom>224</bottom>
@@ -260,7 +260,7 @@
 							<width>100%</width>
 							<height>100%</height>
 							<aspectratio scalediffuse="false">scale</aspectratio>
-							<visible>[String.Contains(ListItem.Property(platform),"MAME") | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)] + !IsEmpty(ListItem.trailer)</visible>
+							<visible>[String.Contains(ListItem.Property(platform),"MAME") | Container.Content(games)] + !String.IsEmpty(ListItem.trailer)</visible>
 					</control>
 					
 						<control type="image">
@@ -271,7 +271,7 @@
 							<aspectratio scalediffuse="false" align="left" aligny="top">keep</aspectratio>
 							<fadetime>300</fadetime>
 							<texture>$INFO[ListItem.Art(cartridge)]</texture>
-							<visible>!String.Contains(ListItem.Property(platform),"MAME") + !substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+							<visible>!String.Contains(ListItem.Property(platform),"MAME") + !Container.Content(games)</visible>
 						</control>
 
 					 <control type="image">
@@ -281,7 +281,7 @@
                         <height>460</height>
 						<aspectratio scalediffuse="false" align="left" aligny="top">keep</aspectratio>
                         <texture>http://mamedev.org/_include/img/logo-mame.png</texture>
-						<visible>[String.Contains(ListItem.Property(platform),"MAME") | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)] + IsEmpty(ListItem.trailer) + !String.IsEqual(ListItem.Label,"MAME")</visible>
+						<visible>[String.Contains(ListItem.Property(platform),"MAME") | Container.Content(games)] + String.IsEmpty(ListItem.trailer) + !String.IsEqual(ListItem.Label,"MAME")</visible>
                     </control>
 				
                     <control type="grouplist">
@@ -475,7 +475,7 @@
                 </control>
                 
 				<control type="list" id="9501">
-                    <visible allowhiddenfocus="true">!IsEmpty(Window.Property(content)) + String.IsEqual(Window.Property(content),2) + !Container(9501).IsUpdating + !Control.IsVisible(50)</visible>
+                    <visible allowhiddenfocus="true">!String.IsEmpty(Window.Property(content)) + String.IsEqual(Window.Property(content),2) + !Container(9501).IsUpdating + !Control.IsVisible(50)</visible>
 					<include>Animation.DelayFadeIn.Slide</include>
 					<ondown>ClearProperty(content)</ondown>
                     <ondown>9000</ondown>
@@ -586,43 +586,43 @@
 					<item id="1">
 	                    <icon>$INFO[ListItem.Art(flyer)]</icon>
 	                    <label>Flyer</label>
-	                    <visible>!isEmpty(ListItem.Art((flyer))</visible>
+	                    <visible>!String.IsEmpty(ListItem.Art((flyer))</visible>
 						<onclick>9505</onclick>
                      </item>
 					<item id="2">
 	                    <icon>$INFO[ListItem.Art(boxfront)]</icon>
 	                    <label>31291</label>
-	                    <visible>!isEmpty(ListItem.Art(boxfront))</visible>
+	                    <visible>!String.IsEmpty(ListItem.Art(boxfront))</visible>
 						<onclick>9505</onclick>
                      </item>
                      <item id="3">
                     <icon>$INFO[ListItem.Art(boxback)]</icon>
                     <label>31292</label>
-                     <visible>!isEmpty(ListItem.Art(boxback))</visible>
+                     <visible>!String.IsEmpty(ListItem.Art(boxback))</visible>
 					<onclick>9505</onclick>
                      </item>
 					<item id="4">
                     <icon>$INFO[ListItem.Art(title)]</icon>
                     <label>31290</label>
-                    <visible>!isEmpty(ListItem.Art(title))</visible>
+                    <visible>!String.IsEmpty(ListItem.Art(title))</visible>
 					<onclick>9505</onclick>
                      </item>
 					<item id="5">
                     <icon>$INFO[ListItem.Art(snap)]</icon>
                     <label>Snapshot</label>
-                    <visible>!isEmpty(ListItem.Art(snap))</visible>
+                    <visible>!String.IsEmpty(ListItem.Art(snap))</visible>
 					<onclick>9505</onclick>
                     </item>
 					<item id="6">
                     <icon>$INFO[ListItem.Art(cartridge)]</icon>
                     <label>$LOCALIZE[31293]  •  $LOCALIZE[31294]</label>
-                     <visible>!isEmpty(ListItem.Art(cartridge))</visible>
+                     <visible>!String.IsEmpty(ListItem.Art(cartridge))</visible>
 					<onclick>9505</onclick>
                     </item>
 					<item id="7">
                     <icon>$INFO[ListItem.Art(map)]</icon>
                     <label>31295</label>
-                     <visible>!isEmpty(ListItem.Art(map))</visible>
+                     <visible>!String.IsEmpty(ListItem.Art(map))</visible>
 					<onclick>9505</onclick>
                     </item>
 				</content>
@@ -727,43 +727,43 @@
 					<item id="1">
 	                    <icon>$INFO[ListItem.Art(flyer)]</icon>
 	                    <label>Flyer</label>
-	                    <visible>!isEmpty(ListItem.Art((flyer))</visible>
+	                    <visible>!String.IsEmpty(ListItem.Art((flyer))</visible>
 						<onclick>9506</onclick>
                      </item>
 					<item id="2">
 	                    <icon>$INFO[ListItem.Art(boxfront)]</icon>
 	                    <label>31297</label>
-	                    <visible>!isEmpty(ListItem.Art(boxfront))</visible>
+	                    <visible>!String.IsEmpty(ListItem.Art(boxfront))</visible>
 						<onclick>9506</onclick>
                      </item>
                      <item id="3">
                     <icon>$INFO[ListItem.Art(boxback)]</icon>
                     <label>31298</label>
-                     <visible>!isEmpty(ListItem.Art(boxback))</visible>
+                     <visible>!String.IsEmpty(ListItem.Art(boxback))</visible>
 					<onclick>9506</onclick>
                      </item>
 					<item id="4">
                     <icon>$INFO[ListItem.Art(title)]</icon>
                     <label>31290</label>
-                    <visible>!isEmpty(ListItem.Art(title))</visible>
+                    <visible>!String.IsEmpty(ListItem.Art(title))</visible>
 					<onclick>9506</onclick>
                      </item>
 					<item id="5">
                     <icon>$INFO[ListItem.Art(snap)]</icon>
                     <label>Snapshot</label>
-                    <visible>!isEmpty(ListItem.Art(snap))</visible>
+                    <visible>!String.IsEmpty(ListItem.Art(snap))</visible>
 					<onclick>9506</onclick>
                     </item>
 					<item id="6">
                     <icon>$INFO[ListItem.Art(cartridge)]</icon>
                     <label>PCB</label>
-                     <visible>!isEmpty(ListItem.Art(cartridge))</visible>
+                     <visible>!String.IsEmpty(ListItem.Art(cartridge))</visible>
 					<onclick>9506</onclick>
                     </item>
 					<item id="7">
                     <icon>$INFO[ListItem.Art(map)]</icon>
                     <label>31295</label>
-                     <visible>!isEmpty(ListItem.Art(map))</visible>
+                     <visible>!String.IsEmpty(ListItem.Art(map))</visible>
 					<onclick>9506</onclick>
                     </item>
 				</content>

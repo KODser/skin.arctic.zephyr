@@ -9,8 +9,8 @@
             <control type="group">
                 <control type="list" id="57">
 					<oninfo condition="ListItem.IsCollection">ActivateWindow(1131)</oninfo>
-                    <oninfo condition="substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)">ActivateWindow(1128)</oninfo>
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.launcher/,left) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(actors) | Container.Content(sets) | Container.Content(seasons)</visible>
+                    <oninfo condition="Container.Content(games)">ActivateWindow(1128)</oninfo>
+                    <visible>Container.Content(games) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(actors) | Container.Content(sets) | Container.Content(seasons)</visible>
                     <top>PosterPad</top>
                     <height>PosterH</height>
                     <right>SidePad</right>
@@ -55,8 +55,8 @@
                 <posy>320</posy>
                 <control type="fixedlist" id="57">
 					<oninfo condition="ListItem.IsCollection">ActivateWindow(1131)</oninfo>
-                    <oninfo condition="substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)">ActivateWindow(1128)</oninfo>
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(movies) | Container.Content(tvshows) | [Container.Content(episodes) + !substring(Container.FolderPath,plugin://,left)] | Container.Content(actors) | Container.Content(sets) | Container.Content(seasons)</visible>
+                    <oninfo condition="Container.Content(games)">ActivateWindow(1128)</oninfo>
+                    <visible>Container.Content(games) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(movies) | Container.Content(tvshows) | [Container.Content(episodes) + !String.Contains(Container.FolderPath,plugin://,left)] | Container.Content(actors) | Container.Content(sets) | Container.Content(seasons)</visible>
                     <top>PosterPad</top>
                     <height>320</height>
                     <right>SidePad</right>
@@ -125,7 +125,7 @@
                     <textcolor>Dark1</textcolor>
                     <selectedcolor>Dark1</selectedcolor>
                     <label>$VAR[LabelDirector]</label>
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+                    <visible>Container.Content(games)</visible>
                 </control>
                 
                 <!--CHANGED-->
@@ -137,7 +137,7 @@
                     <textcolor>Dark1</textcolor>
                     <selectedcolor>Dark1</selectedcolor>
                     <label>$INFO[ListItem.Studio]</label>
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+                    <visible>Container.Content(games)</visible>
                 </control>
                 <!--END-->
                 
@@ -203,7 +203,7 @@
                     <textcolor>Dark1</textcolor>
                     <selectedcolor>Dark1</selectedcolor>
                     <label>$VAR[LabelDirector]</label>
-                    <visible>!substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) + !substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+                    <visible>!Container.Content(games)</visible>
                 </control>
                 
                 <!--CHANGED-->
@@ -215,7 +215,7 @@
                     <textcolor>Dark1</textcolor>
                     <selectedcolor>Dark1</selectedcolor>
                     <label>$INFO[ListItem.Studio]</label>
-                    <visible>substring(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/,left) | substring(Container.FolderPath,plugin://plugin.program.advanced.mame.launcher/,left)</visible>
+                    <visible>Container.Content(games)</visible>
                 </control>
                 <!--END-->
                 

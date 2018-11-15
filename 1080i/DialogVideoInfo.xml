@@ -40,8 +40,8 @@
 					<aspectratio align="right" aligny="top">keep</aspectratio>
 					<texture colordiffuse="Dark1">resource://resource.images.studios.white/$INFO[Window(Home).Property(SkinHelper.ListItem.Studio),,.png]</texture>
 					<visible>!Skin.HasSetting(furniture.studiocolor)</visible>
-					<visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
-					<visible>!Skin.HasSetting(furniture.nowplaying) + ![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord) | Skin.HasSetting(furniture.nowplaying)+ Skin.HasSetting(furniture.studiorecord) | !IsEmpty(Window(10025).Property(PlayingBackgroundMedia))+ Skin.HasSetting(furniture.studiorecord)</visible>
+					<visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
+					<visible>!Skin.HasSetting(furniture.nowplaying) + ![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord) | Skin.HasSetting(furniture.nowplaying)+ Skin.HasSetting(furniture.studiorecord) | !String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))+ Skin.HasSetting(furniture.studiorecord)</visible>
 				</control>
 				
 				<control type="image" id="1235">
@@ -53,8 +53,8 @@
 					<aspectratio align="right" aligny="top">keep</aspectratio>
 					<texture>resource://resource.images.studios.coloured/$INFO[Window(Home).Property(SkinHelper.ListItem.Studio),,.png]</texture>
 					<visible>Skin.HasSetting(furniture.studiocolor)</visible>
-					<visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
-					<visible>!Skin.HasSetting(furniture.nowplaying) + ![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord) | Skin.HasSetting(furniture.nowplaying)+ Skin.HasSetting(furniture.studiorecord) | !IsEmpty(Window(10025).Property(PlayingBackgroundMedia))+ Skin.HasSetting(furniture.studiorecord)</visible>
+					<visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
+					<visible>!Skin.HasSetting(furniture.nowplaying) + ![Player.Playing | Player.Paused] + Skin.HasSetting(furniture.studiorecord) | Skin.HasSetting(furniture.nowplaying)+ Skin.HasSetting(furniture.studiorecord) | !String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))+ Skin.HasSetting(furniture.studiorecord)</visible>
 				</control>
 
                 <!-- Arrows -->
@@ -146,7 +146,7 @@
                         <description>Trailer button</description>
                         <label>20410</label>
                         <include>DefInfoButtons</include>
-                        <visible>!IsEmpty(ListItem.Trailer)</visible>
+                        <visible>!String.IsEmpty(ListItem.Trailer)</visible>
                     </control>
 					
 					<control type="button" id="7">
@@ -162,7 +162,7 @@
                         <onclick>ClearProperty(content)</onclick>
                         <onclick condition="!Skin.HasSetting(noextendedinfoforcast)">SetFocus(51)</onclick>
                         <onclick condition="Skin.HasSetting(noextendedinfoforcast)">SetFocus(50)</onclick>
-                        <visible>!substring(Container.FolderPath,plugin://,left)</visible>
+                        <visible>!String.Contains(Container.FolderPath,plugin://,left)</visible>
                     </control>
 
                     <control type="button" id="9011">
@@ -172,7 +172,7 @@
                         <onclick>SetProperty(content,3)</onclick>
                         <onclick>SetFocus(9501)</onclick>
                         <visible>Container.Content(movies)</visible>
-                        <visible>!IsEmpty(ListItem.Director)</visible>
+                        <visible>!String.IsEmpty(ListItem.Director)</visible>
                     </control>
 
                     <control type="button" id="9012">
@@ -208,7 +208,7 @@
                         <include>DefInfoButtons</include>
                         <label>31171</label>
                         <onclick>RunScript(script.videoextras,display,"$INFO[ListItem.FilenameAndPath]")</onclick>
-                        <visible>System.HasAddon(script.videoextras) + [Container.Content(movies) | Container.Content(episodes) | Container.Content(TVShows) | Container.Content(musicvideos)] + IsEmpty(Window(movieinformation).Property("HideVideoExtrasButton"))</visible>
+                        <visible>System.HasAddon(script.videoextras) + [Container.Content(movies) | Container.Content(episodes) | Container.Content(TVShows) | Container.Content(musicvideos)] + String.IsEmpty(Window(movieinformation).Property("HideVideoExtrasButton"))</visible>
                     </control>
 					
 					<control type="button" id="106">
@@ -216,7 +216,7 @@
 						<include>DefInfoButtons</include>
 						<label>$LOCALIZE[31299]</label>
 						<onclick>RunScript(script.tvtunes,mode=solo)</onclick>
-						<visible>Skin.HasSetting(ActivateTvTunes) + System.HasAddon(script.tvtunes) + [Container.Content(movies) | Container.Content(tvshows)] + String.IsEmpty(Window(movieinformation).Property("TvTunes_HideVideoInfoButton"))</visible>
+						<visible>Skin.HasSetting(ActivateTvTunes) + System.HasAddon(script.tvtunes) + [Container.Content(movies) | Container.Content(tvshows)] + String.String.IsEmpty(Window(movieinformation).Property("TvTunes_HideVideoInfoButton"))</visible>
 					</control>
 
                     <control type="button" id ="6">
@@ -288,7 +288,7 @@
                     <include>Animation.FadeIn</include>
                 </control>
                 <control type="label">
-                    <visible>Control.IsVisible(50) | [!IsEmpty(Window.Property(content)) + !Container(9501).IsUpdating]</visible>
+                    <visible>Control.IsVisible(50) | [!String.IsEmpty(Window.Property(content)) + !Container(9501).IsUpdating]</visible>
                     <left>540</left>
                     <right>SidePad</right>
                     <top>260</top>
@@ -300,7 +300,7 @@
                 </control>
 				
 				<control type="group">
-                    <visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))+ !Control.HasFocus(61)</visible>
+                    <visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))+ !Control.HasFocus(61)</visible>
 					<animation type="Visible">
 							<effect type="slide" start="300,0" end="0,0"  easing="out" time="500" delay="0" reversible="false" />
 							<effect type="fade" start="0" end="100" time="200" delay="300" reversible="false"/>
@@ -350,7 +350,7 @@
 				
 				<control type="group">
 				
-                    <visible>IsEmpty(Window.Property(content))+ Control.HasFocus(61)</visible>
+                    <visible>String.IsEmpty(Window.Property(content))+ Control.HasFocus(61)</visible>
 				
 					<animation type="Visible">
 							<effect type="slide" start="300,0" end="0,0"  easing="out" time="500" delay="0" reversible="false" />
@@ -376,7 +376,7 @@
 				</control>
 
                 <control type="group">
-                    <visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))</visible>
+                    <visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))</visible>
                     <left>540</left>
                     <right>SidePad</right>
                     <bottom>224</bottom>
@@ -439,7 +439,7 @@
 						
 						
 						<control type="group">
-                    <visible>!Control.IsVisible(50) + IsEmpty(Window.Property(content))+ !Control.HasFocus(61)</visible>
+                    <visible>!Control.IsVisible(50) + String.IsEmpty(Window.Property(content))+ !Control.HasFocus(61)</visible>
 				
 					<animation type="Visible">
 							<effect type="slide" start="300,0" end="0,0"  easing="out" time="500" delay="0" reversible="false" />
@@ -670,7 +670,7 @@
                                 <textcolor>Dark2</textcolor>
                                 <label fallback="19055">19055</label>
                                 <aligny>center</aligny>
-                                <visible>IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+                                <visible>String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
                             </control>
                             <control type="grouplist">
                                 <orientation>horizontal</orientation>
@@ -682,65 +682,65 @@
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(AudioLanguage.1),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(AudioLanguage.2),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(AudioLanguage.3),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(AudioLanguage.4),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(AudioLanguage.4))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.4))</visible>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(AudioLanguage.5),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(AudioLanguage.5))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.5))</visible>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(SubtitleLanguage.1),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
                                     <colordiffuse>ff777777</colordiffuse>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(SubtitleLanguage.2),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
                                     <colordiffuse>ff777777</colordiffuse>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(SubtitleLanguage.3),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
                                     <colordiffuse>ff777777</colordiffuse>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(SubtitleLanguage.4),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(SubtitleLanguage.4))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.4))</visible>
                                     <colordiffuse>ff777777</colordiffuse>
                                 </control>
                                 <control type="image">
                                     <width>28</width>
                                     <height>28</height>
                                     <texture>$INFO[ListItem.Property(SubtitleLanguage.5),flags/lang/,.png]</texture>
-                                    <visible>!IsEmpty(ListItem.Property(SubtitleLanguage.5))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.5))</visible>
                                     <colordiffuse>ff777777</colordiffuse>
                                 </control>
                             </control>
@@ -769,7 +769,7 @@
 				
 				<control type="group">
 				
-                    <visible>IsEmpty(Window.Property(content))+ Control.HasFocus(61)</visible>
+                    <visible>String.IsEmpty(Window.Property(content))+ Control.HasFocus(61)</visible>
 				
 					<animation type="Visible">
 							<effect type="slide" start="300,0" end="0,0"  easing="out" time="500" delay="0" reversible="false" />
@@ -990,7 +990,7 @@
                             <textcolor>Dark2</textcolor>
                             <align>justify</align>
                         </control>
-						<visible>!isEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Consensus))</visible>
+						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Consensus))</visible>
 					</control>
 					
 					<control type="grouplist">
@@ -1027,7 +1027,7 @@
                             <textcolor>Dark2</textcolor>
                             <align>justify</align>
                         </control>
-						<visible>!isEmpty(Window(Home).Property(SkinHelper.ListItem.LastEpisode.Plot)) + isEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Consensus))+!Container.Content(movies)</visible>
+						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.LastEpisode.Plot)) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Consensus))+!Container.Content(movies)</visible>
 					</control>
 					
 					 <control type="grouplist">
@@ -1049,7 +1049,7 @@
                             <textcolor>Dark2</textcolor>
                             <!--<align>justify</align>-->
                         </control>
-						<visible>Container.Content(movies) | isEmpty(Window(Home).Property(SkinHelper.ListItem.LastEpisode.GuestStars))</visible>
+						<visible>Container.Content(movies) | String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.LastEpisode.GuestStars))</visible>
 					</control>
 					
 					 <control type="grouplist">
@@ -1071,7 +1071,7 @@
                             <textcolor>Dark2</textcolor>
                             <!--<align>justify</align>-->
                         </control>
-						<visible>!Container.Content(movies) + !isEmpty(Window(Home).Property(SkinHelper.ListItem.LastEpisode.GuestStars))</visible>
+						<visible>!Container.Content(movies) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.LastEpisode.GuestStars))</visible>
 					</control>
 					
 					
@@ -1082,7 +1082,7 @@
 					<itemgap>46</itemgap>
 					<top>175</top>
 					<control type="group">
-					<visible>!isEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Meter))</visible>
+					<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Meter))</visible>
 						<width>200</width>
 						<control type="image">
 							<align>left</align>
@@ -1127,7 +1127,7 @@
 					</control>
 					
 					<control type="group">
-					<visible>!isEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))</visible>
+					<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))</visible>
 						<width>190</width>
 						<control type="image">
 							<align>left</align>
@@ -1135,7 +1135,7 @@
 							<height>64</height>
 							<aspectratio align="center">keep</aspectratio>
 							<texture>flags/ratings/like.png</texture>
-							<visible>IntegerGreaterThan(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter), 59)</visible>
+							<visible>Integer.IsGreater(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter), 59)</visible>
 						</control>
 						
 						<control type="image">
@@ -1144,7 +1144,7 @@
 							<height>64</height>
 							<aspectratio align="center">keep</aspectratio>
 							<texture>flags/ratings/didntlike.png</texture>
-							<visible>!IntegerGreaterThan(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter), 59)</visible>
+							<visible>!Integer.IsGreater(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter), 59)</visible>
 						</control>
 						
 						<control type="label">
@@ -1183,7 +1183,7 @@
 					
 					
 					<control type="group">
-						<visible>!isEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
+						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
 						<width>155</width>
 						<control type="image">
 							<align>left</align>
@@ -1234,13 +1234,13 @@
                                 <textcolor>Dark2</textcolor>
                                 <label>$LOCALIZE[13409]: $INFO[Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)]</label>
                                 <aligny>center</aligny>
-								<visible>!isEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250))</visible>
+								<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250))</visible>
                             </control>
 					</control>
 					
 					<control type="group">
 						<visible>Container.Content(movies)</visible>
-						<visible>!isEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB)</visible>
+						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB)</visible>
 						<width>150</width>
 						<control type="image">
 							<align>left</align>
@@ -1285,7 +1285,7 @@
 					</control>
 					
 					<control type="group">
-						<visible>!Container.Content(movies) + !isEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TVDB))</visible>
+						<visible>!Container.Content(movies) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TVDB))</visible>
 						<width>155</width>
 						<control type="image">
 							<align>left</align>
@@ -1319,7 +1319,7 @@
 					</control>
 					
 					<control type="group">
-					<visible>!isEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible>
+					<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible>
 						<width>195</width>
 						<control type="image">
 							<align>left</align>
@@ -1353,7 +1353,7 @@
 					</control>
 					
 					<control type="group">
-					<visible>!isEmpty(ListItem.UserRating)</visible>
+					<visible>!String.IsEmpty(ListItem.UserRating)</visible>
 						<width>150</width>
 						<control type="image">
 							<align>left</align>
@@ -1516,7 +1516,7 @@
                     <centerbottom>51%</centerbottom>
                     <width>450</width>
                     <height>117</height>
-                    <visible>!IsEmpty(Window.Property(content)) + Container(9501).IsUpdating + !Control.IsVisible(50)</visible>
+                    <visible>!String.IsEmpty(Window.Property(content)) + Container(9501).IsUpdating + !Control.IsVisible(50)</visible>
                     <include>Animation.FadeIn</include>
                     <include>Animation.FadeOut</include>
 
@@ -1554,7 +1554,7 @@
                 </control>		
                 <control type="list" id="9501">
                     <include>Animation.FadeIn.Slide</include>
-                    <visible allowhiddenfocus="true">!IsEmpty(Window.Property(content)) + !Container(9501).IsUpdating + !Control.IsVisible(50)</visible>
+                    <visible allowhiddenfocus="true">!String.IsEmpty(Window.Property(content)) + !Container(9501).IsUpdating + !Control.IsVisible(50)</visible>
                     <bottom>80</bottom>
                     <left>530</left>
                     <width>1320</width>
@@ -1637,7 +1637,7 @@
                                 <effect type="zoom" start="100" end="90" time="150" tween="sine" easing="inout" center="auto" />
                                 <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
                             </animation>
-                            <visible>!substring(ListItem.Path,script.extendedinfo)</visible>
+                            <visible>!String.Contains(ListItem.Path,script.extendedinfo)</visible>
                             <visible>Control.HasFocus(9501)</visible>
                         </control>
                         <control type="group">
@@ -1691,7 +1691,7 @@
 <!--//////////////////////////////////////////////////-->		
 				<!--<control type="list" id="9504">
                     <include>Animation.FadeIn.Slide</include>
-                    <visible allowhiddenfocus="true">!IsEmpty(Window.Property(content)) + !Container(9504).IsUpdating + !Control.IsVisible(50) + String.IsEqual(Window.Property(content),4)</visible>
+                    <visible allowhiddenfocus="true">!String.IsEmpty(Window.Property(content)) + !Container(9504).IsUpdating + !Control.IsVisible(50) + String.IsEqual(Window.Property(content),4)</visible>
                     <bottom>80</bottom>
                     <left>530</left>
                     <width>1320</width>
@@ -1774,7 +1774,7 @@
                                 <effect type="zoom" start="100" end="90" time="150" tween="sine" easing="inout" center="auto" />
                                 <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
                             </animation>
-                            <visible>!substring(ListItem.Path,script.extendedinfo)</visible>
+                            <visible>!String.Contains(ListItem.Path,script.extendedinfo)</visible>
                             <visible>Control.HasFocus(9504)</visible>
                         </control>
                         <control type="group">
